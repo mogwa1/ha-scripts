@@ -16,5 +16,3 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
 #print("Sent:     {}".format(data))
 #print("Received: {}".format(received))
 print("{}".format(received))
-if ("{}".format(received) == 1):
-    return 0
