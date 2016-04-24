@@ -1,4 +1,5 @@
 import socketserver
+import subprocess
 
 class MyTCPHandler(socketserver.BaseRequestHandler):
     """
@@ -10,14 +11,15 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
     """
 
     def handle(self):
-        # self.rfile is a file-like object created by the handler;
-        # we can now use e.g. readline() instead of raw recv() calls
-        self.data = self.rfile.readline().strip()
+        # self.request is the TCP socket connected to the client
+        self.data = self.request.recv(1024).strip()
         print("{} wrote:".format(self.client_address[0]))
         print(self.data)
-        # Likewise, self.wfile is a file-like object used to write back
-        # to the client
-        self.wfile.write(self.data.upper())
+	command=self.data.decode("utf-8")
+        if (command == "kodi on"):
+            subprocess.call(['startkodi'])
+        elif (command == "kodi off"):
+            subprocess.call(['stopkodi'])
 
 
 if __name__ == "__main__":

@@ -14,4 +14,3 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
     received = str(sock.recv(1024), "utf-8")
 
 print("Sent:     {}".format(data))
-print("Received: {}".format(received))
