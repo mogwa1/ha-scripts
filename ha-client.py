@@ -13,5 +13,6 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
     # Receive data from the server and shut down
     received = str(sock.recv(1024), "utf-8")
 
-print("Sent:     {}".format(data))
-print("Received: {}".format(received))
+#print("Sent:     {}".format(data))
+#print("Received: {}".format(received))
+print("{}".format(received))
