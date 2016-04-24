@@ -15,7 +15,7 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
         self.data = self.request.recv(1024).strip()
         print("{} wrote:".format(self.client_address[0]))
         print(self.data)
-	command=self.data.decode("utf-8")
+        command=self.data.decode("utf-8")
         if (command == "kodi on"):
             subprocess.call(['startkodi'])
         elif (command == "kodi off"):
